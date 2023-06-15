@@ -1,3 +1,256 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    name="cm" nsURI="http://www.example.org/cm" nsPrefix="cm"/>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cm" nsURI="http://cm/1.0" nsPrefix="cm">
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeElement" abstract="true"
+      eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sincrono" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementOperation" upperBound="-1"
+        eType="#//ElementOperation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborationRole" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualification" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="user" eType="#//User" eOpposite="#//User/collaborationRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignedRoleElementOperation"
+        upperBound="-1" eType="#//RoleElementOperation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User" abstract="true" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborationRole" upperBound="-1"
+        eType="#//CollaborationRole" eOpposite="#//CollaborationRole/user"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SharedObject" eSuperTypes="#//CollaborativeElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lockable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeAssociation" abstract="true"
+      eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Association">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPermanent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tool" eSuperTypes="#//CollaborativeElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reference" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="URL" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="display" eType="#//EnumDisplay"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeActivity" eSuperTypes="#//CollaborativeElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="protocol" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//StateMachine"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="purpose" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myRoles" upperBound="-1"
+        eType="#//CollaborationRole"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPersonal" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Event" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Workspace" eSuperTypes="#//CollaborativeElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linked" upperBound="-1"
+        eType="#//Workspace"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workspace" eType="#//Workspace"
+        eOpposite="#//Workspace/innerWorkspace"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="innerWorkspace" upperBound="-1"
+        eType="#//Workspace" containment="true" eOpposite="#//Workspace/workspace"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocationRelationship" eSuperTypes="#//CollaborativeAssociation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UseRelationship" eSuperTypes="#//CollaborativeAssociation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParticipationRelationship" eSuperTypes="#//CollaborativeAssociation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeModel" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Model">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Vamos a poner algo acá&#xD;&#xA;&#xD;&#xA;saludos"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="awarenessKind" upperBound="-1"
+        eType="#//AwarenessKind" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="awarenessInfo" upperBound="-1"
+        eType="#//Awareness" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumSubActivityValues"
+        upperBound="-1" eType="#//EnumSubActivityKind" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="membersKindValues" upperBound="-1"
+        eType="#//EnumGroupKind" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumActivityKindValues"
+        upperBound="-1" eType="#//EnumActivityKind" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumInteractionValues"
+        upperBound="-1" eType="#//EnumInteraction" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumPlayerKindValues" upperBound="-1"
+        eType="#//EnumPlayerKind" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumHapticEffectValues"
+        upperBound="-1" eType="#//HapticRoleEffect" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumHapticPriorityValues"
+        upperBound="-1" eType="#//HapticRolePriority" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumHapticOrderValues"
+        upperBound="-1" eType="#//HapticRoleOrder" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SessionRelationship" abstract="true"
+      eSuperTypes="#//CollaborativeAssociation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BelongsRelationship" eSuperTypes="#//SessionRelationship"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SharedRelationship" eSuperTypes="#//SessionRelationship"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumActivityKind">
+    <eLiterals name="undefined"/>
+    <eLiterals name="inout" value="1"/>
+    <eLiterals name="in" value="2"/>
+    <eLiterals name="out" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleMapping" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//CollaborationRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//CollaborationRole"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeProcess" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Activity">
+    <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
+      <details key="archetype" value="Description"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Activity"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeActivityNode" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//ActivityNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborativeActivity"
+        unique="false" eType="#//CollaborativeActivity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myEvent" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//EnumActivityKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupKind" eType="#//EnumGroupKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeActivityState" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Vertex">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborativeActivity"
+        unique="false" lowerBound="1" eType="#//CollaborativeActivity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignedRoleElementOperation"
+        upperBound="-1" eType="#//RoleElementOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingRoleElementOperation"
+        upperBound="-1" eType="#//RoleElementOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//EnumSubActivityKind"
+        defaultValueLiteral="undefined"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myEvent" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Event" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Awareness" abstract="true" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kind" eType="#//AwarenessKind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shownIn" lowerBound="1"
+        upperBound="-1" eType="#//CollaborativeElement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="synchronous" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transient" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modal" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interaction" eType="#//EnumInteraction"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="player" eType="#//EnumPlayerKind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hapticIndicator" upperBound="-1"
+        eType="#//HapticIndicator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="#//HapticRolePriority"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" eType="#//HapticRoleOrder"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effect" eType="#//HapticRoleEffect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AwarenessKind" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elements" upperBound="-1"
+        eType="#//AwarenessElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumGroupKind">
+    <eLiterals name="undefined"/>
+    <eLiterals name="cooperative" value="1"/>
+    <eLiterals name="individual" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumSubActivityKind">
+    <eLiterals name="undefined"/>
+    <eLiterals name="shareInfo" value="1"/>
+    <eLiterals name="analisys" value="2"/>
+    <eLiterals name="desicionMaking" value="3"/>
+    <eLiterals name="inputData" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeProcessEdge" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//ActivityEdge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roleMapping" upperBound="-1"
+        eType="#//RoleMapping" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roleElementOperation" eType="#//RoleElementOperation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RoleElementOperation" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eOperations name="getName" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (isSetOwner())    if (elementOperation != null)     return &quot;(&quot;+((org.eclipse.uml2.uml.NamedElement) getOwner()).getName().trim()+&quot;)&quot;+elementOperation.getName().trim();    else     return &quot;(&quot;+((org.eclipse.uml2.uml.NamedElement) getOwner()).getName().trim()+&quot;) No ElementOperation&quot;;   return &quot;No RoleElementOperation&quot;;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementOperation" eType="#//ElementOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callEvent" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//CallEvent"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElementOperation" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eOperations name="getName" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (isSetOwner())    if (operation != null)     return ((org.eclipse.uml2.uml.NamedElement) getOwner()).getName().trim()+&quot;->&quot;+operation.getName().trim();    else     return ((org.eclipse.uml2.uml.NamedElement) getOwner()).getName().trim()+&quot;->no operation&quot;;   return &quot;No ElementOperation&quot;;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Operation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborativeProtocolTransition" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//ProtocolTransition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roleElementOperation" eType="#//RoleElementOperation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collaborativeModelList"
+        upperBound="-1" eType="#//CollaborativeModel" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AwarenessElement">
+    <eLiterals name="Precence"/>
+    <eLiterals name="Location" value="1"/>
+    <eLiterals name="Density" value="2"/>
+    <eLiterals name="UserInfo" value="3"/>
+    <eLiterals name="Rol" value="4"/>
+    <eLiterals name="ActivityLevel" value="5"/>
+    <eLiterals name="Action" value="6"/>
+    <eLiterals name="History" value="7"/>
+    <eLiterals name="Intention" value="8"/>
+    <eLiterals name="Boobmarks" value="9"/>
+    <eLiterals name="Change" value="10"/>
+    <eLiterals name="Expectation" value="11"/>
+    <eLiterals name="Objects" value="12"/>
+    <eLiterals name="Visibility" value="13"/>
+    <eLiterals name="Abilities" value="14"/>
+    <eLiterals name="Influence" value="15"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumInteraction">
+    <eLiterals name="undefined"/>
+    <eLiterals name="goesaway" value="1"/>
+    <eLiterals name="postponable" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumPlayerKind">
+    <eLiterals name="undefined"/>
+    <eLiterals name="continuous" value="1"/>
+    <eLiterals name="cyclic" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HapticIndicator" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//EnumHapticKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amplitude" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repetitions" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumHapticKind">
+    <eLiterals name="Plateau"/>
+    <eLiterals name="UpwardSlope" value="1"/>
+    <eLiterals name="DownwardSlope" value="2"/>
+    <eLiterals name="Hill" value="3"/>
+    <eLiterals name="Composite" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumDisplay">
+    <eLiterals name="visual"/>
+    <eLiterals name="haptic" value="1"/>
+    <eLiterals name="audio" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HapticRoleEffect">
+    <eLiterals name="Reinforcement"/>
+    <eLiterals name="Complementary" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HapticRolePriority">
+    <eLiterals name="Primary"/>
+    <eLiterals name="Secondary" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HapticRoleOrder">
+    <eLiterals name="Initial"/>
+    <eLiterals name="FollowUp" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

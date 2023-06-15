@@ -1,12 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/CollaborativeModel.cm/src-gen" creationIcons="false"
-    editDirectory="/CollaborativeModel.cm.edit/src-gen" editorDirectory="/CollaborativeModel.cm.editor/src-gen"
-    modelPluginID="CollaborativeModel.cm" modelName="Cm" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" operationReflection="true" importOrganizing="true">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.lifia.cm/src" modelPluginID="org.lifia.cm"
+    modelName="Cm" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    rootImplementsInterface="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types ../../org.eclipse.uml2.uml/model/UML.genmodel#//uml"
+    operationReflection="true" importOrganizing="true">
   <foreignModel>cm.ecore</foreignModel>
-  <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Cm" basePackage="collaborativemodel" disposableProviderFactory="true"
-      ecorePackage="cm.ecore#/"/>
+  <genPackages prefix="Cm" disposableProviderFactory="true" ecorePackage="cm.ecore#/">
+    <genEnums ecoreEnum="cm.ecore#//EnumActivityKind">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumActivityKind/undefined"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumActivityKind/inout"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumActivityKind/in"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumActivityKind/out"/>
+    </genEnums>
+    <genEnums ecoreEnum="cm.ecore#//EnumGroupKind">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumGroupKind/undefined"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumGroupKind/cooperative"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumGroupKind/individual"/>
+    </genEnums>
+    <genEnums ecoreEnum="cm.ecore#//EnumSubActivityKind">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumSubActivityKind/undefined"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumSubActivityKind/shareInfo"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumSubActivityKind/analisys"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumSubActivityKind/desicionMaking"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumSubActivityKind/inputData"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//AwarenessElement">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Precence"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Location"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Density"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/UserInfo"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Rol"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/ActivityLevel"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Action"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/History"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Intention"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Boobmarks"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Change"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Expectation"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Objects"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Visibility"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Abilities"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//AwarenessElement/Influence"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//EnumInteraction">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumInteraction/undefined"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumInteraction/goesaway"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumInteraction/postponable"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//EnumPlayerKind">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumPlayerKind/undefined"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumPlayerKind/continuous"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumPlayerKind/cyclic"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//EnumHapticKind">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/Plateau"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/UpwardSlope"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/DownwardSlope"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/Hill"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/Composite"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//EnumDisplay">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumDisplay/visual"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumDisplay/haptic"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumDisplay/audio"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//HapticRoleEffect">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//HapticRoleEffect/Reinforcement"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//HapticRoleEffect/Complementary"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//HapticRolePriority">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//HapticRolePriority/Primary"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//HapticRolePriority/Secondary"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//HapticRoleOrder">
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//HapticRoleOrder/Initial"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//HapticRoleOrder/FollowUp"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="cm.ecore#//CollaborativeElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeElement/sincrono"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeElement/elementOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//CollaborationRole">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborationRole/qualification"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborationRole/user"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborationRole/assignedRoleElementOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//User">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//User/collaborationRole"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//SharedObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//SharedObject/lockable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//SharedObject/persistent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="cm.ecore#//CollaborativeAssociation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeAssociation/isPermanent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeAssociation/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeAssociation/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//Tool">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Tool/reference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Tool/URL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Tool/display"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//CollaborativeActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivity/protocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeActivity/purpose"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivity/myRoles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeActivity/isPersonal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivity/event"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//Workspace">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//Workspace/linked"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//Workspace/workspace"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//Workspace/innerWorkspace"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//LocationRelationship"/>
+    <genClasses ecoreClass="cm.ecore#//UseRelationship"/>
+    <genClasses ecoreClass="cm.ecore#//ParticipationRelationship"/>
+    <genClasses ecoreClass="cm.ecore#//CollaborativeModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeModel/awarenessKind"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeModel/awarenessInfo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeModel/enumSubActivityValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeModel/membersKindValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeModel/enumActivityKindValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeModel/enumInteractionValues"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeModel/enumPlayerKindValues"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeModel/enumHapticEffectValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeModel/enumHapticPriorityValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeModel/enumHapticOrderValues"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="cm.ecore#//SessionRelationship"/>
+    <genClasses ecoreClass="cm.ecore#//BelongsRelationship"/>
+    <genClasses ecoreClass="cm.ecore#//SharedRelationship"/>
+    <genClasses ecoreClass="cm.ecore#//RoleMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//RoleMapping/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//RoleMapping/target"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//CollaborativeProcess">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeProcess/activity"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//CollaborativeActivityNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivityNode/collaborativeActivity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivityNode/myEvent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeActivityNode/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeActivityNode/groupKind"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//CollaborativeActivityState">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivityState/collaborativeActivity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivityState/assignedRoleElementOperation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivityState/outgoingRoleElementOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//CollaborativeActivityState/kind"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeActivityState/myEvent"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//Awareness">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//Awareness/kind"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//Awareness/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//Awareness/shownIn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Awareness/synchronous"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Awareness/transient"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Awareness/modal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Awareness/interaction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Awareness/player"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//Awareness/hapticIndicator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Awareness/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Awareness/order"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//Awareness/effect"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//AwarenessKind">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//AwarenessKind/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//CollaborativeProcessEdge">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeProcessEdge/roleMapping"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeProcessEdge/roleElementOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//RoleElementOperation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cm.ecore#//RoleElementOperation/elementOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cm.ecore#//RoleElementOperation/callEvent"/>
+      <genOperations ecoreOperation="cm.ecore#//RoleElementOperation/getName" body="if (isSetOwner())    if (elementOperation != null)     return &quot;(&quot;+((org.eclipse.uml2.uml.NamedElement) getOwner()).getName().trim()+&quot;)&quot;+elementOperation.getName().trim();    else     return &quot;(&quot;+((org.eclipse.uml2.uml.NamedElement) getOwner()).getName().trim()+&quot;) No ElementOperation&quot;;   return &quot;No RoleElementOperation&quot;;"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//ElementOperation">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//ElementOperation/operation"/>
+      <genOperations ecoreOperation="cm.ecore#//ElementOperation/getName" body="if (isSetOwner())    if (operation != null)     return ((org.eclipse.uml2.uml.NamedElement) getOwner()).getName().trim()+&quot;->&quot;+operation.getName().trim();    else     return ((org.eclipse.uml2.uml.NamedElement) getOwner()).getName().trim()+&quot;->no operation&quot;;   return &quot;No ElementOperation&quot;;"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//CollaborativeProtocolTransition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//CollaborativeProtocolTransition/roleElementOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//ModelList">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference cm.ecore#//ModelList/collaborativeModelList"/>
+    </genClasses>
+    <genClasses ecoreClass="cm.ecore#//HapticIndicator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//HapticIndicator/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//HapticIndicator/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//HapticIndicator/period"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//HapticIndicator/amplitude"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cm.ecore#//HapticIndicator/repetitions"/>
+    </genClasses>
+  </genPackages>
 </genmodel:GenModel>
