@@ -128,7 +128,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="myEvent" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Event" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Awareness" abstract="true" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
+  <eClassifiers xsi:type="ecore:EClass" name="Awareness" eSuperTypes="../../org.eclipse.uml2.uml/model/UML.ecore#//Class">
     <eStructuralFeatures xsi:type="ecore:EReference" name="kind" eType="#//AwarenessKind"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Event"/>
