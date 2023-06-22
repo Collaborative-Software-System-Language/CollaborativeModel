@@ -234,7 +234,7 @@
     <eLiterals name="UpwardSlope" value="1"/>
     <eLiterals name="DownwardSlope" value="2"/>
     <eLiterals name="Hill" value="3"/>
-    <eLiterals name="Composite" value="4"/>
+    <eLiterals name="Pause" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EnumDisplay">
     <eLiterals name="visual"/>

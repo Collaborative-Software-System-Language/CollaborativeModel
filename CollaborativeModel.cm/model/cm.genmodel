@@ -58,7 +58,7 @@
       <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/UpwardSlope"/>
       <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/DownwardSlope"/>
       <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/Hill"/>
-      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/Composite"/>
+      <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumHapticKind/Pause"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="cm.ecore#//EnumDisplay">
       <genEnumLiterals ecoreEnumLiteral="cm.ecore#//EnumDisplay/visual"/>
